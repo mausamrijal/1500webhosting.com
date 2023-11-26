@@ -7,6 +7,51 @@
 
 </head>
 <body>
+    <div class="loading-container">
+        <div class="loading-spinner"></div>
+    </div>
+  <style>
+
+    .loading-container
+ {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999; /* Ensure the loading spinner is on top of other content */
+    display: none; /* Initially hide the loading container */
+}
+.loading-spinner {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite; /* Apply the spin animation */
+}
+
+</style>
+  <script>
+        // Your JavaScript code goes here
+        document.addEventListener("DOMContentLoaded", function () {
+            // DOM is fully loaded, hide the loading container
+            document.querySelector('.loading-container').style.display = 'none';
+        });
+
+        window.addEventListener("load", function () {
+            // Page is fully loaded, additional assets (images, stylesheets) might still be loading
+            // You can add more specific loading tasks here if needed
+            // For now, we'll just wait for a short period before hiding the loading spinner
+            setTimeout(function () {
+                document.querySelector('.loading-container').style.display = 'none';
+            }, 500); // Adjust the timeout as needed
+        });
+    </script>
 <!-- partial:index.partial.html -->
 <!--<script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>-->
     <header id="header">
@@ -23,8 +68,13 @@
             margin-left: 20px; /* Adjust the margin as needed */
 
         }
-    </style>
 
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+
+    </style>
+   
         <nav id="nav-bar">
             <ul>
                 <li><a class="nav-link" href="#features">why to choose us?</a></li>
@@ -179,6 +229,6 @@ Copyright ©<script data-cfasync="false" src="js/email-decode.min.js"></script><
 </p></span>
 </footer>
 <!-- partial -->
-  
+   <script src="scripts.js"></script>
 </body>
 </html>
